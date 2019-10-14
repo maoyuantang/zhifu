@@ -1,0 +1,122 @@
+/* pages/home/home.wxss */
+
+.home_img image {
+  width: 260rpx;
+  height: 260rpx;
+  display: block;
+  margin: auto;
+}
+
+.home_prorated, .home_surplus {
+  font-size: 18rpx;
+  color: rgb(0, 0, 0);
+  padding: 20rpx 0 0 60rpx;
+}
+
+.home_proratedDetail {
+  display: flex;
+  align-items: center;
+}
+
+.home_proratedDetailNum {
+  font-size: 20rpx;
+  color: rgb(0, 0, 0);
+  flex: 1;
+  text-align: center;
+}
+
+.home_kong {
+  flex: 1;
+}
+
+.home_exchange {
+  flex: 1;
+  color: green;
+  font-size: 14rpx;
+}
+
+.home_surplusNum {
+  font-size: 40rpx;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.home_prop {
+  width: 345rpx;
+  line-height: 44rpx;
+  background: green;
+  color: white;
+  padding: 10rpx 0;
+  margin-top: 20rpx;
+}
+
+.home_surT {
+  margin: 30px auto 30px;
+  display: block;
+}
+
+.home_surTcontent{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h_s {
+  width: 242rpx;
+  border: 1rpx solid rgb(102, 102, 102);
+
+}
+.h_s input{
+  padding: 5rpx;
+  padding-left: 15rpx;
+  font-size: 18rpx;
+}
+
+.h_s_a {
+  font-size: 30rpx;
+  color: rgb(107, 107, 107);
+  margin: 0 0 0 20rpx;
+}
+
+.h_btn{
+  font-size: 32rpx;
+  color: green;
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+
+.h_title{
+  margin-top: 18rpx;
+  font-size: 18rpx;
+  text-align: center;
+}
+
+.h_n_content{
+  display: block;
+  margin: auto;
+}
+.h_n{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18rpx;
+}
+.h_n_c{
+  border: 1rpx solid rgb(102, 102, 102);
+  width: 220rpx;
+}
+.h_n_c input{
+  padding: 5rpx;
+  padding-left: 15rpx;
+  font-size: 18rpx;
+}
+.h_n_btn .btn{
+  text-align: center;
+  border-radius: 10rpx;
+  background: green;
+  color: white;
+  font-size: 24rpx;
+  margin: 0 0 0 15rpx;
+  padding: 14rpx 30rpx;
+}

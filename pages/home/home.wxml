@@ -1,0 +1,55 @@
+<view class="home">
+  <view class="home_img">
+    <image src="../../utils/img/img.png"></image>
+  </view>
+  <view class="home_prorated">账户积分：</view>
+  <view class="home_proratedDetail">
+    <view class="home_kong"></view>
+    <view class="home_proratedDetailNum">{{accoutP}} 个</view>
+    <view bindtap="proratedFun" class="home_exchange">兑换</view>
+  </view>
+  <view class="home_surplus">账户余额：</view>
+  <view class="home_surplusNum">¥ {{accoutS}}</view>
+  <button bindtap="propFun" class="home_prop">提现</button>
+  <!-- 提现层 -->
+  <van-popup show="{{ isProp }}" bind:close="propFunClose" position="bottom" custom-style="height: 80%;">
+    <view class="h_title">提现金额</view>
+    <view class="h_n_content">
+      <view class="h_n">
+        <view class="h_n_c">
+          <input class="h_n_input" auto-focus placeholder="当前可提现金额为¥{{xpro}}元。" />
+        </view>
+        <view class="h_n_btn">
+          <view class="btn">全部</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="h_title">手机验证码</view>
+    <view class="h_n_content">
+      <view class="h_n">
+        <view class="h_n_c">
+          <input class="h_n_input" auto-focus placeholder="输入验证码" />
+        </view>
+        <view class="h_n_btn">
+          <view class="btn">获取验证码</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="h_btn">确定</view>
+  </van-popup>
+  <!-- 兑换层 -->
+  <van-popup show="{{ isSurplus }}" bind:close="proratedFunClose" position="bottom" custom-style="height: 80%;">
+    <view class="home_surT">
+      <view class="home_surTcontent">
+        <view class="h_s">
+          <input class="h_s_input" auto-focus placeholder="当前可兑换积分{{xpur}}个" />
+        </view>
+        <view class="h_s_a">全部</view>
+      </view>
+      <view class="h_btn">确定</view>
+    </view>
+  </van-popup>
+</view>

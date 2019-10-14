@@ -1,0 +1,28 @@
+<!--pages/login/login.wxml-->
+<view>
+  <view class="f-tc">
+    <!-- <image src="{{logo}}"></image> -->
+    <image class="logo_img" src="../../utils/img/img.png"></image>
+  </view>
+  <view class="f-tc u-title">云手艺店铺端</view>
+  <view class="m-input-group">
+    <view class="m-input-cell">
+      <view class="m-cell-title f-tc">店铺账号</view>
+      <view class="m-cell-input">
+        <input bindinput="accountFun" class="u-input" placeholder="请输入店铺账号" />
+      </view>
+    </view>
+    <view class="m-input-cell">
+      <view class="m-cell-title f-tc">登陆密码</view>
+      <view class="m-cell-input">
+        <input bindinput="passwordFun" class="u-input" password placeholder="请输入登陆密码" />
+      </view>
+    </view>
+  </view>
+  <view class="f-tc">
+    <button type="primary" size="mini" bindtap="login">登录</button>
+  </view>
+  <van-popup show="{{ show }}" position="bottom" custom-style="height: 20%;" bind:close="onClose">内容
+    <input class="u-input" password placeholder="请输入登陆密码" />
+  </van-popup>
+</view>

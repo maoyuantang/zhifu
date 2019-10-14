@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+<view wx:for="{{array}}" wx:for-index="idx" >
+  {{idx}}: {{item.message}}
+</view>
+
+
+<!-- <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+    <view wx:if="{{i <= j}}">
+      {{i}} * {{j}} = {{i * j}}
+    </view>
+  </view>
+</view> -->
+
+<block wx:for="{{[1, 2, 3]}}">
+  <view> {{index}}: </view>
+  <view> {{item}} </view>
+</block> 
+
+
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+    <van-button type="primary" bind:click='clickFun'>按钮</van-button>
+    <view> {{a + b}} + {{c}} + d </view>
+    <checkbox checked="{{true}}"> </checkbox>
+    <view hidden="{{false}}"> Hidden </view>
+    <view>{{"hello" + name}}</view>
+  </view>
+</view>
