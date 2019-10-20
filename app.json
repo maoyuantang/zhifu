@@ -3,13 +3,17 @@
     "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/tiXianRecord/tiXianRecord",
+    "pages/duiHuanRecord/duiHuanRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "云手艺店铺端",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true,
+    "navigationStyle":"default"
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {

@@ -1,0 +1,12 @@
+<view class="d_t">
+  <view class="title">序号</view>
+  <view class="title">时间</view>
+  <view class="title">金额</view>
+  <view class="title">余额</view>
+</view>
+<view wx:for="{{list}}" class="d_l">
+  <view class="l_c index">{{item.index}}</view>
+  <view class="l_c time">{{item.time}}</view>
+  <view class="l_c amount">{{item.amount}}</view>
+  <view class="l_c over">{{item.over}}</view>
+</view>

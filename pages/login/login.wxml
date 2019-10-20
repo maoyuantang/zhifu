@@ -15,7 +15,7 @@
     <view class="m-input-cell">
       <view class="m-cell-title f-tc">登陆密码</view>
       <view class="m-cell-input">
-        <input bindinput="passwordFun" class="u-input" password placeholder="请输入登陆密码" />
+        <input bindinput="passwordFun" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
       </view>
     </view>
   </view>
