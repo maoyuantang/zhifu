@@ -6,7 +6,7 @@
   <view class="home_proratedDetail">
     <view class="home_proratedDetailNum">{{accoutP}} 个</view>
     <view bindtap="proratedFun" class="home_exchange">兑换</view>
-  </view>
+  </view> 
   <view class="home_surplus">账户余额：</view>
   <view class="home_surplusNum">¥ {{accoutS}}</view>
   <button bindtap="propFun" class="home_prop">提现</button>
@@ -39,16 +39,14 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input class="h_n_input" auto-focus placeholder="输入验证码" adjust-position='true' />
+          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" auto-focus placeholder="输入验证码" adjust-position='true' />
         </view>
         <view class="h_n_btn">
-          <view class="btn">获取验证码</view>
+          <button class="btn" disabled="{{disabled}}" bindtap="btnGetCode">{{codeWord}}</button>
         </view>
       </view>
     </view>
-
-
-    <view class="h_btn">确定</view>
+    <view bindtap="txFunYes" class="h_btn">确定</view>
   </van-popup>
   <!-- 兑换层 -->
   <van-popup show="{{ isSurplus }}" bind:close="proratedFunClose" position="bottom">
@@ -59,7 +57,7 @@
         </view>
         <view bindtap="duiHuanAll" class="h_s_a">全部</view>
       </view>
-      <view class="h_btn">确定</view>
+      <view bindtap="dhFunYes" class="h_btn">确定</view>
     </view>
   </van-popup>
 </view>

@@ -9,13 +9,13 @@
     <view class="m-input-cell">
       <view class="m-cell-title f-tc">店铺账号</view>
       <view class="m-cell-input">
-        <input bindinput="accountFun" class="u-input" placeholder="请输入店铺账号" />
+        <input bindinput="accountFun" value="{{accountValue}}" class="u-input" placeholder="请输入店铺账号" adjust-position='true'/>
       </view>
     </view>
     <view class="m-input-cell">
       <view class="m-cell-title f-tc">登陆密码</view>
       <view class="m-cell-input">
-        <input bindinput="passwordFun" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
+        <input bindinput="passwordFun" value="{{passwordValue}}" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
       </view>
     </view>
   </view>
@@ -26,3 +26,17 @@
     <input class="u-input" password placeholder="请输入登陆密码" />
   </van-popup>
 </view>
+
+<van-popup show="{{ isCode }}" bind:close="isCodeClose" position="bottom">
+  <view class="l_n_content">
+    <view class="l_n">
+      <view class="l_n_c">
+        <input bindinput="codeNum" class="l_n_input" auto-focus placeholder="输入验证码" adjust-position='true' />
+      </view>
+      <view class="l_n_btn">
+        <button class="btn" disabled="{{disabled}}" bindtap="getCode">{{codeWord}}</button>
+      </view>
+    </view>
+  </view>
+  <button disabled="{{yesCode}}" bindtap="loginYes" class="l_btn">确定</button>
+</van-popup>

@@ -1,21 +1,79 @@
 // pages/home/home.js
 const app = getApp()
+const req = require('../../utils/request.js')
+const util = require('../../utils/util.js')
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     accoutP: 666, //可兑换金额
     accoutS: 999.00, //可提现金额
     isSurplus: false, //兑换层
     isProp: false, //提现层
-    xpur: "", //提现placeholder
-    xpro: "", //兑换placeholder
+    xpur: "", //提现value
+    xpro: "", //兑换value
+    disabled: false,
+    codeWord: '获取验证码',
+    code:''
   },
   /**
    * 自定义函数
    */
+  codeWatch(e){
+    this.setData({
+      code:e.detail.value
+    })
+  },
+  btnGetCode() {
+    //请求
+    //如果成功
+    var _this = this
+    this.setData({
+      disabled: true
+    })
+    var coden = 60 // 定义60秒的倒计时
+    var codeV = setInterval(function() {
+      _this.setData({ // _this这里的作用域不同了
+        codeWord: '重新获取' + (--coden) + 's'
+      })
+      if (coden == -1) { // 清除setInterval倒计时，这里可以做很多操作，按钮变回原样等
+        clearInterval(codeV)
+        _this.setData({
+          codeWord: '获取验证码',
+          disabled: false
+        })
+      }
+    }, 1000) //  1000是1秒
+  },
+  dhFunYes() {
+    //请求
+    //如果成功
+    var nums = this.data.accoutP - this.data.xpro
+    if (nums >= 0) {
+      this.setData({
+        accoutP: this.data.accoutP - this.data.xpro
+      })
+      this.proratedFunClose()
+    } else {
+      console.log('积分不足')
+    }
+  },
+  txFunYes() {
+    console.log(this.data.xpur,this.data.code)
+    //请求
+    //如果成功
+    var nums = this.data.accoutS - this.data.xpur
+    if (nums >= 0) {
+      this.setData({
+        accoutS: this.data.accoutS - this.data.xpur
+      })
+      this.propFunClose()
+    } else {
+      console.log('余额不足')
+    }
+  },
   txWacth(e) {
     this.setData({
       xpur: e.detail.value
@@ -49,7 +107,8 @@ Page({
   propFun() { //提现开启
     this.setData({
       isProp: true,
-      xpur: ""
+      xpur: "",
+      code:""
     })
   },
   propFunClose() { //提现关闭

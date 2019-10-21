@@ -10,10 +10,52 @@ Page({
     show: false,
     accountValue: "",
     passwordValue: "",
+    isCode:false,
+    loginCode:'',
+    codeWord:'获取验证码',
+    code:'',
+    disabled:false,
+    yesCode:true
   },
   /**
    * 自定义函数
    */
+  codeNum(e){
+    if(e.detail.value.length==6){
+      this.setData({
+        yesCode: false,
+        code: e.detail.value
+      })
+    }else{
+      this.setData({
+        yesCode: true
+      })
+    }
+    
+  },
+  getCode(){
+    //发请求
+    var _this = this
+    // if (json.code == 200) {
+    if (true) {
+      this.setData({
+        disabled:true
+      })
+      var coden = 60    // 定义60秒的倒计时
+      var codeV = setInterval(function () {
+        _this.setData({    // _this这里的作用域不同了
+          codeWord: '重新获取' + (--coden) + 's'
+        })
+        if (coden == -1) {  // 清除setInterval倒计时，这里可以做很多操作，按钮变回原样等
+          clearInterval(codeV)
+          _this.setData({
+            codeWord: '获取验证码',
+            disabled: false
+          })
+        }
+      }, 1000)  //  1000是1秒
+    }
+  },
   onClose() {
     this.setData({
       show: false
@@ -29,7 +71,25 @@ Page({
       passwordValue: e.detail.value
     })
   },
-  login() {
+  isCodeClose(){
+    this.setData({
+      isCode:false
+    })
+  },
+  login(){
+    console.log(this.data.accountValue,this.data.passwordValue)
+    //请求
+    if(true){
+      this.setData({
+        isCode: true,
+        yesCode: true,
+        disabled: false,
+        code: ""
+      })
+    }
+  },
+  loginYes() {
+    console.log(this.data.code)
     wx.reLaunch({
       url: '../home/home',
     })

@@ -2,7 +2,7 @@
 
 .home_img image {
   width: 520rpx;
-  height: 520rpx;
+  height: 520rpx; 
   display: block;
   margin: auto;
 }
@@ -113,8 +113,8 @@
 }
 
 .h_n_btn .btn, .h_s_a {
-  margin: 0px;
-  padding: 0px;
+  margin: 0rpx;
+  padding: 0rpx 10rpx;
   width: 156rpx;
   line-height: 60rpx;
   transform: scale(1);
