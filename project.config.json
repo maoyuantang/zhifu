@@ -4,17 +4,26 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx2fd37fe1de81b59a",
+	"libVersion": "2.9.0",
+	"appid": "wxdb1b02d9823f03fa",
 	"projectname": "zhifu",
 	"debugOptions": {
 		"hidedInDevtools": []

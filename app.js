@@ -1,6 +1,7 @@
 //app.js
+const req = require('./utils/request.js')
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -9,8 +10,40 @@ App({
     // 登录
     wx.login({
       success: res => {
-        
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // console.log(res.code);
+        // wx.request({
+        //   url: 'http://192.168.0.102:8021/shopApp/selectShopInfo',
+        //   data:{
+        //     jsCode: res.code
+        //   },
+        //   success:function(res){
+        //     console.log(res);
+        //   },
+        //   fail:function(err){
+        //     console.log(err);
+        //   }
+        // })
+        req.requestFun('post', 'selectShopInfo', {
+            jsCode: res.code
+          })
+          .then(res => {
+            // console.log(res)
+            if (res.data.data == 'N') {
+              wx.reLaunch({
+                url: '../login/login',
+              })
+            } else {
+              this.globalData.shopId=res.data.data
+              console.log(this.globalData.shopId)
+              wx.reLaunch({
+                url: '../home/home',
+              })
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     })
     // 获取用户信息
@@ -35,6 +68,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    shopId:''
   }
 })

@@ -1,6 +1,7 @@
 module.exports={
   requestFun(method='post',url,data){
-    const baseUrl = "https://www.easy-mock.com/mock/5bd1845fd78eb6062635a8f7/yuan";
+    // const baseUrl =  "https://www.easy-mock.com/mock/5bd1845fd78eb6062635a8f7/yuan";
+    const baseUrl = "http://192.168.0.102:8021/shopApp/";
     return new Promise((resolve,reject)=>{
       wx.request({
         method,
