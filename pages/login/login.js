@@ -1,6 +1,9 @@
 // pages/login/login.js
 const app = getApp()
+console.log(app)
 const req = require('../../utils/request.js')
+const fun = require('../../utils/util.js')
+// console.log(fun.getTime(11111111111111))
 
 Page({
   /**
@@ -41,37 +44,31 @@ Page({
         shopId: this.data.shopId
       })
       .then(res => {
-        // console.log(res)
-
-        // wx.showLoast({
-        //   title:'dafdasf'
-        // })
-
-
+        console.log(res)
+        var _this = this
+        if (true) {
+          this.setData({
+            disabled: true
+          })
+          var coden = 60 // 定义60秒的倒计时
+          var codeV = setInterval(function () {
+            _this.setData({ // _this这里的作用域不同了
+              codeWord: '重新获取' + (--coden) + 's'
+            })
+            if (coden == -1) { // 清除setInterval倒计时，这里可以做很多操作，按钮变回原样等
+              clearInterval(codeV)
+              _this.setData({
+                codeWord: '获取验证码',
+                disabled: false
+              })
+            }
+          }, 1000) //  1000是1秒
+        }
       })
       .catch(err => {
         console.log(err)
       })
-    var _this = this
-    // if (json.code == 200) {
-    if (true) {
-      this.setData({
-        disabled: true
-      })
-      var coden = 60 // 定义60秒的倒计时
-      var codeV = setInterval(function() {
-        _this.setData({ // _this这里的作用域不同了
-          codeWord: '重新获取' + (--coden) + 's'
-        })
-        if (coden == -1) { // 清除setInterval倒计时，这里可以做很多操作，按钮变回原样等
-          clearInterval(codeV)
-          _this.setData({
-            codeWord: '获取验证码',
-            disabled: false
-          })
-        }
-      }, 1000) //  1000是1秒
-    }
+    
   },
   onClose() {
     this.setData({
@@ -100,7 +97,7 @@ Page({
         loginPwd: this.data.passwordValue
       })
       .then(res => {
-        // console.log(res)
+        console.log(res) 
         if (res.data.code == '0000') {
           this.setData({
             isCode: true,
@@ -111,7 +108,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '账号或密码不正确',
+            title: res.data.message,
             icon: 'none',
             duration: 2000
           })
@@ -133,7 +130,7 @@ Page({
             phoneCode: this.data.code
           })
           .then(res => {
-            // console.log(res)
+            console.log(res)
             wx.reLaunch({
               url: '../home/home',
             })

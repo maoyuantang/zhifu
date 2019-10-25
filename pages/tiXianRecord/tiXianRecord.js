@@ -1,3 +1,7 @@
+const app = getApp();
+console.log(app)
+const req = require('../../utils/request.js')
+const fun = require('../../utils/util.js')
 // pages/tiXianRecord/tiXianRecord.js
 Page({
 
@@ -25,7 +29,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    req.requestFun('post', 'shopPresentationRecord', {
+      shopId: app.globalData.shopId
+    })
+      .then(res => {
+        console.log(res)
+        var list = res.data.data.list
+        list.map((v, i) => {
+          list[i].operatingTime = fun.getTime(v.operatingTime)
+        })
+        this.setData({
+          list: res.data.data.list
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
 
   /**

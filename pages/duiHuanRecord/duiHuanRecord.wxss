@@ -18,3 +18,6 @@
   font-family: 微软雅黑;
   color: rgb(0, 0, 0);
 }
+.title:nth-child(2),.l_c:nth-child(2){
+  min-width: 300rpx;
+}

@@ -28,7 +28,7 @@ App({
             jsCode: res.code
           })
           .then(res => {
-            // console.log(res)
+            console.log(res)
             if (res.data.data == 'N') {
               wx.reLaunch({
                 url: '../login/login',

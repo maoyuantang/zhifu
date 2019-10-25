@@ -112,7 +112,7 @@
   border-radius: 0px;
 }
 
-.h_n_btn .btn, .h_s_a {
+ .h_s_a {
   margin: 0rpx;
   padding: 0rpx 10rpx;
   width: 156rpx;
@@ -128,7 +128,17 @@
   border-radius: 6rpx;
   margin-left: 10rpx;
   color: white;
-  font-size: 28rpx;
+  font-size: 20rpx;
+}
+.h_n_btn{
+  width: 156rpx;
+  margin: 0 0 0 10rpx;
+  background-color: green;
+  border-radius: 6rpx;
+  color: white;
+  font-size: 20rpx;
+  line-height: 58rpx;
+  padding: 0;
 }
 
 .bs {

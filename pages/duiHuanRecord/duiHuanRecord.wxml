@@ -4,9 +4,9 @@
   <view class="title">金额</view>
   <view class="title">余额</view>
 </view>
-<view wx:for="{{list}}" class="d_l">
-  <view class="l_c index">{{item.index}}</view>
-  <view class="l_c time">{{item.time}}</view>
-  <view class="l_c amount">{{item.amount}}</view>
-  <view class="l_c over">{{item.over}}</view>
+<view wx:for="{{list}}" :key='index' class="d_l">
+  <view class="l_c index">{{index+1}}</view>
+  <view class="l_c time">{{item.operatingTime}}</view>
+  <view class="l_c amount">{{item.money}}</view>
+  <view class="l_c over">{{item.account}}</view>
 </view>

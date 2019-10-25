@@ -6,7 +6,7 @@
   <view class="home_proratedDetail">
     <view class="home_proratedDetailNum">{{accoutP}} 个</view>
     <view bindtap="proratedFun" class="home_exchange">兑换</view>
-  </view> 
+  </view>
   <view class="home_surplus">账户余额：</view>
   <view class="home_surplusNum">¥ {{accoutS}}</view>
   <button bindtap="propFun" class="home_prop">提现</button>
@@ -27,11 +27,9 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput='txWacth' value="{{xpur}}" class="h_n_input" auto-focus placeholder="当前可提现金额为¥{{accoutS}}元。" />
+          <input bindinput='txWacth' value="{{xpur}}" class="h_n_input" auto-focus placeholder="当前可提现金额为¥{{accoutS}}元。"  onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"/>
         </view>
-        <view class="h_n_btn">
-          <view bindtap="tiXianAll" class="btn">全部</view>
-        </view>
+          <button bindtap="tiXianAll" class="h_n_btn">全部</button>
       </view>
     </view>
 
@@ -39,11 +37,9 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" auto-focus placeholder="输入验证码" adjust-position='true' />
+          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" auto-focus placeholder="输入验证码" adjust-position='true' onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"/>
         </view>
-        <view class="h_n_btn">
-          <button class="btn" disabled="{{disabled}}" bindtap="btnGetCode">{{codeWord}}</button>
-        </view>
+        <button disabled="{{disabled}}" bindtap="btnGetCode" class="h_n_btn">{{codeWord}}</button>
       </view>
     </view>
     <view bindtap="txFunYes" class="h_btn">确定</view>
@@ -53,7 +49,7 @@
     <view class="home_surT">
       <view class="home_surTcontent">
         <view class="h_s">
-          <input bindinput='dhWacth' value="{{xpro}}" class="h_s_input" auto-focus placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' />
+          <input bindinput='dhWacth' value="{{xpro}}" class="h_s_input" auto-focus placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')" />
         </view>
         <view bindtap="duiHuanAll" class="h_s_a">全部</view>
       </view>
