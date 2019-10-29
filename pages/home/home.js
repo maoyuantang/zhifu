@@ -17,7 +17,8 @@ Page({
     disabled: false,
     codeWord: '获取验证码',
     code: '',
-    shopLogo: ''
+    shopLogo: '',
+    reClick: false
   },
   /**
    * 自定义函数
@@ -173,14 +174,23 @@ Page({
     })
   },
   txFun() {
+    fun.noReClick(this)
     wx.navigateTo({
       url: '../tiXianRecord/tiXianRecord',
     })
   },
   dhFun() {
+    fun.noReClick(this)
+    // fun.showLoading('加载中...');
     wx.navigateTo({
       url: '../duiHuanRecord/duiHuanRecord',
+      // complete: function (res) {
+      //   // 通过eventChannel向被打开页面传送数据
+      //   // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+      //   fun.hideLoading();
+      // }
     })
+
   },
   propFun() { //提现开启
     this.setData({
@@ -221,6 +231,7 @@ Page({
           accoutS: money,
           shopLogo: app.globalData.shopLogo
         })
+
       })
       .catch(err => {
         console.log(err)
@@ -246,12 +257,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    console.log('监听页面初次渲染完成')
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('监听页面显示')
 
   },
 
@@ -259,6 +272,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    console.log('监听页面隐藏')
 
   },
 
@@ -266,13 +280,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('监听页面卸载')
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.log('监听用户下拉动作')
 
   },
 

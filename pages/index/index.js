@@ -142,9 +142,18 @@ Page({
           })
             .then(res => {
               console.log(res)
-              wx.reLaunch({
-                url: '../home/home',
-              })
+              if (res.data.code == '0000') {
+                wx.reLaunch({
+                  url: '../home/home',
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+
             })
             .catch(err => {
               console.log(err)

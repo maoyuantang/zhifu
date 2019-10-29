@@ -4,7 +4,7 @@
   <view class="title">金额</view>
   <view class="title">余额</view>
 </view>
-<view wx:for="{{list}}" :key='index' class="t_l">
+<view wx:for="{{lists}}" :key='index' class="t_l">
   <view class="l_c index">{{index+1}}</view>
   <view class="l_c time">{{item.operatingTime}}</view>
   <view class="l_c amount">{{item.money}}</view>

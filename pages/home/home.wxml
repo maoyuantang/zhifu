@@ -13,11 +13,11 @@
   <view class="bs">
     <view class="b_div" bindtap="txFun">
       <image class="b_t" src="../../utils/img/book.svg"></image>
-      <view class="t_x" bindtap="txFun">提现记录</view>
+      <button disabled='{{reClick}}' class="t_x" bindtap="txFun">提现记录</button>
     </view>
     <view class="b_div" bindtap="dhFun">
       <image class="b_d" src="../../utils/img/book.svg"></image>
-      <view class="d_h">兑换记录</view>
+      <button disabled='{{reClick}}' class="d_h">兑换记录</button>
     </view>
   </view>
 
@@ -27,7 +27,8 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput='txWacth' value="{{xpur}}" class="h_n_input" placeholder="当前可提现金额为¥{{accoutS}}元。" />
+          <input cursor-spacing='60' bindinput='txWacth' value="{{xpur}}" class="h_n_input" placeholder="当前可提现金额为¥{{accoutS}}元。" />
+          <view class="abs_money">平台将扣除3%的手续费,实际到账金额为￥{{accoutS-accoutS*0.03}}。</view>
         </view>
         <button bindtap="tiXianAll" class="h_n_btn">全部</button>
       </view>
@@ -37,7 +38,7 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" placeholder="输入验证码" adjust-position='true' />
+          <input cursor-spacing='60' bindinput="codeWatch" class="h_n_input" value="{{code}}" placeholder="输入验证码" adjust-position='true' />
         </view>
         <button disabled="{{disabled}}" bindtap="btnGetCode" class="h_n_btn">{{codeWord}}</button>
       </view>
@@ -49,7 +50,7 @@
     <view class="home_surT">
       <view class="home_surTcontent">
         <view class="h_s">
-          <input bindinput='dhWacth' value="{{xpro}}" class="h_s_input" placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' />
+          <input cursor-spacing='60' bindinput='dhWacth' value="{{xpro}}" class="h_s_input" placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' />
         </view>
         <view bindtap="duiHuanAll" class="h_s_a">全部</view>
       </view>

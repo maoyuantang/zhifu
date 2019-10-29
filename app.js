@@ -25,9 +25,9 @@ App({
               if (this.delayedCallback) {
                 this.delayedCallback(true);
               }
-              // wx.reLaunch({
-              //   url: '../home/home',
-              // })
+              wx.reLaunch({
+                url: '../home/home',
+              })
             }
           })
           .catch(err => {

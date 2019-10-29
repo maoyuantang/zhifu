@@ -90,6 +90,7 @@
 
 .h_n_c {
   display: block;
+  position: relative;
 }
 
 .h_n_c input, .h_s input {
@@ -171,4 +172,17 @@
   text-decoration: none;
   font-family: 微软雅黑;
   color: rgb(0, 0, 0);
+  background: none;
+
+}
+button::after{
+  content: none !important;
+}
+
+.abs_money {
+  position: absolute;
+  left: 0rpx;
+  top: 82rpx;
+  color: rgb(188, 188, 188);
+  font-size: 18rpx;
 }

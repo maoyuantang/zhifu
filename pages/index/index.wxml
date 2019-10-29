@@ -8,13 +8,13 @@
     <view class="m-input-cell">
       <view class="m-cell-title f-tc">店铺账号</view>
       <view class="m-cell-input">
-        <input bindinput="accountFun" value="{{accountValue}}" class="u-input" placeholder="请输入店铺账号" adjust-position='true'/>
+        <input cursor-spacing='60' bindinput="accountFun" value="{{accountValue}}" class="u-input" placeholder="请输入店铺账号" adjust-position='true'/>
       </view>
     </view>
     <view class="m-input-cell">
       <view class="m-cell-title f-tc">登陆密码</view>
       <view class="m-cell-input">
-        <input bindinput="passwordFun" value="{{passwordValue}}" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
+        <input cursor-spacing='60' bindinput="passwordFun" value="{{passwordValue}}" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
       </view>
     </view>
   </view>
@@ -22,7 +22,7 @@
     <button type="primary" size="mini" bindtap="login">登录</button>
   </view>
   <van-popup show="{{ show }}" position="bottom" custom-style="height: 20%;" bind:close="onClose">内容
-    <input class="u-input" password placeholder="请输入登陆密码" />
+    <input cursor-spacing='60' class="u-input" password placeholder="请输入登陆密码" />
   </van-popup>
 </view>
 
@@ -30,7 +30,7 @@
   <view class="l_n_content">
     <view class="l_n">
       <view class="l_n_c">
-        <input bindinput="codeNum" class="l_n_input" placeholder="输入验证码" adjust-position='true' />
+        <input cursor-spacing='60' bindinput="codeNum" class="l_n_input" placeholder="输入验证码" adjust-position='true' />
       </view>
       <view class="l_n_btn">
         <button class="btn" disabled="{{disabled}}" bindtap="getCode">{{codeWord}}</button>

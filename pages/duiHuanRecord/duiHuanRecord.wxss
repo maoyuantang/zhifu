@@ -5,6 +5,8 @@
 }
 .d_l{
   padding: 6rpx 0;
+  line-height: 100rpx;
+
 }
 
 .title,.l_c{

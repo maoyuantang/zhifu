@@ -5,7 +5,20 @@ module.exports = {
   hideLoading: hideLoading,
   checkC: checkC,
   onlyNum: onlyNum,
+  noReClick: noReClick,
   // reloadFun: reloadFun
+}
+
+// 避免重复点击
+function noReClick(v) {
+  v.setData({
+    reClick: true
+  })
+  setTimeout(function () {
+    v.setData({
+      reClick: false
+    })
+  }, 500)
 }
 
 // 禁止中文 
