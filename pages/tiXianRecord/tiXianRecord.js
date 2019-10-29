@@ -1,5 +1,4 @@
 const app = getApp();
-console.log(app)
 const req = require('../../utils/request.js')
 const fun = require('../../utils/util.js')
 // pages/tiXianRecord/tiXianRecord.js

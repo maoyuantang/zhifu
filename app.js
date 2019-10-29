@@ -3,27 +3,13 @@ const req = require('./utils/request.js')
 App({
   onLaunch: function() {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
 
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res.code);
-        // wx.request({
-        //   url: 'http://192.168.0.102:8021/shopApp/selectShopInfo',
-        //   data:{
-        //     jsCode: res.code
-        //   },
-        //   success:function(res){
-        //     console.log(res);
-        //   },
-        //   fail:function(err){
-        //     console.log(err);
-        //   }
-        // })
         req.requestFun('post', 'selectShopInfo', {
             jsCode: res.code
           })
@@ -31,14 +17,17 @@ App({
             console.log(res)
             if (res.data.data == 'N') {
               wx.reLaunch({
-                url: '../login/login',
+                url: '../index/index',
               })
             } else {
-              this.globalData.shopId=res.data.data
+              this.globalData.shopId = res.data.data;
               console.log(this.globalData.shopId)
-              wx.reLaunch({
-                url: '../home/home',
-              })
+              if (this.delayedCallback) {
+                this.delayedCallback(true);
+              }
+              // wx.reLaunch({
+              //   url: '../home/home',
+              // })
             }
           })
           .catch(err => {
@@ -69,6 +58,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    shopId:''
+    shopId: '',
+    shopLogo: ''
   }
 })

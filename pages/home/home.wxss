@@ -1,8 +1,8 @@
 /* pages/home/home.wxss */
 
-.home_img image {
+.home_img .image {
   width: 520rpx;
-  height: 520rpx; 
+  height: 520rpx;
   display: block;
   margin: auto;
 }
@@ -62,10 +62,12 @@
 }
 
 .h_btn {
-  font-size: 32rpx;
-  color: green;
-  margin: 40rpx 0 0 0;
+  font-size: 24rpx;
+  color: white;
   text-align: center;
+  background-color: green;
+  width: 25%;
+  margin: 40rpx auto;
 }
 
 .h_title {
@@ -112,7 +114,7 @@
   border-radius: 0px;
 }
 
- .h_s_a {
+.h_s_a {
   margin: 0rpx;
   padding: 0rpx 10rpx;
   width: 156rpx;
@@ -130,14 +132,15 @@
   color: white;
   font-size: 20rpx;
 }
-.h_n_btn{
+
+.h_n_btn {
   width: 156rpx;
   margin: 0 0 0 10rpx;
   background-color: green;
   border-radius: 6rpx;
   color: white;
-  font-size: 20rpx;
-  line-height: 58rpx;
+  font-size: 24rpx;
+  line-height: 80rpx;
   padding: 0;
 }
 

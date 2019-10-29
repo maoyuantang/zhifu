@@ -1,37 +1,41 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!--pages/login/login.wxml-->
+<view>
+  <view class="f-tc">
+    <image class="logo_img" src="../../utils/img/logo.png"></image>
   </view>
-<view wx:for="{{array}}" wx:for-index="idx" >
-  {{idx}}: {{item.message}}
-</view>
-
-
-<!-- <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
-  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
-    <view wx:if="{{i <= j}}">
-      {{i}} * {{j}} = {{i * j}}
+  <view class="f-tc u-title">云手艺店铺端</view>
+  <view class="m-input-group">
+    <view class="m-input-cell">
+      <view class="m-cell-title f-tc">店铺账号</view>
+      <view class="m-cell-input">
+        <input bindinput="accountFun" value="{{accountValue}}" class="u-input" placeholder="请输入店铺账号" adjust-position='true'/>
+      </view>
+    </view>
+    <view class="m-input-cell">
+      <view class="m-cell-title f-tc">登陆密码</view>
+      <view class="m-cell-input">
+        <input bindinput="passwordFun" value="{{passwordValue}}" class="u-input" password placeholder="请输入登陆密码" adjust-position='true' />
+      </view>
     </view>
   </view>
-</view> -->
-
-<block wx:for="{{[1, 2, 3]}}">
-  <view> {{index}}: </view>
-  <view> {{item}} </view>
-</block> 
-
-
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <van-button type="primary" bind:click='clickFun'>按钮</van-button>
-    <view> {{a + b}} + {{c}} + d </view>
-    <checkbox checked="{{true}}"> </checkbox>
-    <view hidden="{{false}}"> Hidden </view>
-    <view>{{"hello" + name}}</view>
+  <view class="f-tc">
+    <button type="primary" size="mini" bindtap="login">登录</button>
   </view>
+  <van-popup show="{{ show }}" position="bottom" custom-style="height: 20%;" bind:close="onClose">内容
+    <input class="u-input" password placeholder="请输入登陆密码" />
+  </van-popup>
 </view>
+
+<van-popup show="{{ isCode }}" bind:close="isCodeClose" position="bottom">
+  <view class="l_n_content">
+    <view class="l_n">
+      <view class="l_n_c">
+        <input bindinput="codeNum" class="l_n_input" placeholder="输入验证码" adjust-position='true' />
+      </view>
+      <view class="l_n_btn">
+        <button class="btn" disabled="{{disabled}}" bindtap="getCode">{{codeWord}}</button>
+      </view>
+    </view>
+  </view>
+  <button disabled="{{yesCode}}" bindtap="loginYes" class="l_btn">确定</button>
+</van-popup>

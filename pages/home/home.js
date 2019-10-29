@@ -1,6 +1,5 @@
 // pages/home/home.js
 const app = getApp()
-console.log(app)
 const req = require('../../utils/request.js')
 const fun = require('../../utils/util.js')
 
@@ -9,15 +8,16 @@ Page({
    * 页面的初始数据 
    */
   data: {
-    accoutP: 666, //可兑换金额
-    accoutS: 3.25, //可提现金额
+    accoutP: 0, //可兑换金额
+    accoutS: 0, //可提现金额
     isSurplus: false, //兑换层
     isProp: false, //提现层
-    xpur: "", //提现value
-    xpro: "", //兑换value
+    xpur: 0, //提现value
+    xpro: 0, //兑换value
     disabled: false,
     codeWord: '获取验证码',
-    code: ''
+    code: '',
+    shopLogo: ''
   },
   /**
    * 自定义函数
@@ -70,68 +70,87 @@ Page({
       })
   },
   dhFunYes() {
-    //请求
-    req.requestFun('post', 'pointExchange', {
-      shopId: app.globalData.shopId,
-      point: this.data.xpro
-    })
-      .then(res => {
-        console.log(res)
-        if (res.data.code == "0000") {
-          wx.showToast({
-            title: res.data.data,
-            icon: 'none',
-            duration: 2000
-          })
-          this.setData({
-            accoutP: this.data.accoutP - this.data.xpro
-          })
-          this.proratedFunClose()
-          // fun.reloadFun();
-          //刷新当前页面的数据
-          getCurrentPages()[getCurrentPages().length - 1].onLoad()
-        } else{
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 2000
-          })
-        }
+    if (fun.onlyNum(this.data.xpro)) {
+      //请求
+      req.requestFun('post', 'pointExchange', {
+        shopId: app.globalData.shopId,
+        point: this.data.xpro
       })
-      .catch(err => {
-        console.log(err)
+        .then(res => {
+          console.log(res)
+          if (res.data.code == "0000") {
+            wx.showToast({
+              title: res.data.data,
+              icon: 'none',
+              duration: 2000
+            })
+            this.setData({
+              accoutP: this.data.accoutP - this.data.xpro
+            })
+            this.proratedFunClose()
+            // fun.reloadFun();
+            //刷新当前页面的数据
+            getCurrentPages()[getCurrentPages().length - 1].onLoad()
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    } else {
+      wx.showToast({
+        title: '输入内容不正确',
+        icon: 'none',
+        duration: 2000
       })
+    }
+
   },
   txFunYes() {
-    // console.log(this.data.xpur, this.data.code)
-    req.requestFun('post', 'shopAccountPresentation', {
-      shopId: app.globalData.shopId,
-      amount: (this.data.xpur) * 100,
-      phoneCode: this.data.code
-    })
-      .then(res => {
-        console.log(res)
-        if (res.data.code == '0000') {
-          this.setData({
-            accoutS: this.data.accoutS - this.data.xpur
-          })
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 2000
-          })
-          this.propFunClose()
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 2000
-          })
-        }
+    if (fun.onlyNum(this.data.xpur) && fun.onlyNum(this.data.code) && this.data.code.length == 4) {
+      // console.log(this.data.xpur, this.data.code)
+      req.requestFun('post', 'shopAccountPresentation', {
+        shopId: app.globalData.shopId,
+        amount: (this.data.xpur) * 100,
+        phoneCode: this.data.code
       })
-      .catch(err => {
-        console.log(err)
+        .then(res => {
+          console.log(res)
+          if (res.data.code == '0000') {
+            this.setData({
+              accoutS: this.data.accoutS - this.data.xpur
+            })
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000
+            })
+            this.propFunClose()
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    } else {
+      wx.showToast({
+        title: '输入内容不正确',
+        icon: 'none',
+        duration: 2000
       })
+    }
+
+
   },
   txWacth(e) {
     this.setData({
@@ -166,8 +185,8 @@ Page({
   propFun() { //提现开启
     this.setData({
       isProp: true,
-      xpur: "",
-      code: ""
+      xpur: '',
+      code: ''
     })
   },
   propFunClose() { //提现关闭
@@ -178,7 +197,7 @@ Page({
   proratedFun() { //兑换开启
     this.setData({
       isSurplus: true,
-      xpro: ""
+      xpro: ''
     })
   },
   proratedFunClose() { //兑换关闭
@@ -187,21 +206,20 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    // console.log(app.globalData)
+  callBackApp() {
+    var that = this;
     req.requestFun('post', 'selectShopAppHome', {
       shopId: app.globalData.shopId
     })
       .then(res => {
         console.log(res)
+        app.globalData.shopLogo = res.data.data.shopLogo
         var money = res.data.data.tblShopAccountInfo.accountAvailableBalance
         money = fun.returnFloat(money)
-        this.setData({
+        that.setData({
           accoutP: res.data.data.tblShopAccountInfo.leftIntegral,
-          accoutS: money
+          accoutS: money,
+          shopLogo: app.globalData.shopLogo
         })
       })
       .catch(err => {
@@ -210,10 +228,24 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // console.log(1)
+    var that = this;
+    that.callBackApp();
+    app.delayedCallback = res => {
+      if (res) {
+        that.onLoad();
+        // console.log(11)
+      }
+    }
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

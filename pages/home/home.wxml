@@ -1,6 +1,6 @@
 <view class="home">
   <view class="home_img">
-    <image src="../../utils/img/img.png"></image>
+    <image class="image" src="{{shopLogo}}"></image>
   </view>
   <view class="home_prorated">账户积分：</view>
   <view class="home_proratedDetail">
@@ -27,9 +27,9 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput='txWacth' value="{{xpur}}" class="h_n_input" auto-focus placeholder="当前可提现金额为¥{{accoutS}}元。"  onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"/>
+          <input bindinput='txWacth' value="{{xpur}}" class="h_n_input" placeholder="当前可提现金额为¥{{accoutS}}元。" />
         </view>
-          <button bindtap="tiXianAll" class="h_n_btn">全部</button>
+        <button bindtap="tiXianAll" class="h_n_btn">全部</button>
       </view>
     </view>
 
@@ -37,23 +37,23 @@
     <view class="h_n_content">
       <view class="h_n">
         <view class="h_n_c">
-          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" auto-focus placeholder="输入验证码" adjust-position='true' onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"/>
+          <input bindinput="codeWatch" class="h_n_input" value="{{code}}" placeholder="输入验证码" adjust-position='true' />
         </view>
         <button disabled="{{disabled}}" bindtap="btnGetCode" class="h_n_btn">{{codeWord}}</button>
       </view>
     </view>
-    <view bindtap="txFunYes" class="h_btn">确定</view>
+    <button bindtap="txFunYes" class="h_btn">确定</button>
   </van-popup>
   <!-- 兑换层 -->
   <van-popup show="{{ isSurplus }}" bind:close="proratedFunClose" position="bottom">
     <view class="home_surT">
       <view class="home_surTcontent">
         <view class="h_s">
-          <input bindinput='dhWacth' value="{{xpro}}" class="h_s_input" auto-focus placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')" />
+          <input bindinput='dhWacth' value="{{xpro}}" class="h_s_input" placeholder="当前可兑换积分{{accoutP}}个" adjust-position='true' />
         </view>
         <view bindtap="duiHuanAll" class="h_s_a">全部</view>
       </view>
-      <view bindtap="dhFunYes" class="h_btn">确定</view>
+      <button bindtap="dhFunYes" class="h_btn">确定</button>
     </view>
   </van-popup>
 </view>
