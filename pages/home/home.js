@@ -174,21 +174,33 @@ Page({
     })
   },
   txFun() {
-    fun.noReClick(this)
+    var that = this;
+    // fun.noReClick(this)
+    that.setData({
+      reClick: true
+    })
+    setTimeout(function () {
+      that.setData({
+        reClick: false
+      })
+    }, 1000)
     wx.navigateTo({
       url: '../tiXianRecord/tiXianRecord',
     })
   },
   dhFun() {
+    var that = this;
     fun.noReClick(this)
     // fun.showLoading('加载中...');
     wx.navigateTo({
       url: '../duiHuanRecord/duiHuanRecord',
-      // complete: function (res) {
-      //   // 通过eventChannel向被打开页面传送数据
-      //   // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
-      //   fun.hideLoading();
-      // }
+      complete: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+        this.setData({
+          reClick:true
+        })
+      }
     })
 
   },
