@@ -174,35 +174,36 @@ Page({
     })
   },
   txFun() {
-    var that = this;
     // fun.noReClick(this)
-    that.setData({
-      reClick: true
-    })
-    setTimeout(function () {
-      that.setData({
-        reClick: false
+    if (!this.data.reClick) {
+      this.setData({
+        reClick: true
       })
-    }, 1000)
-    wx.navigateTo({
-      url: '../tiXianRecord/tiXianRecord',
-    })
+      setTimeout(() => {
+        this.setData({
+          reClick: false
+        })
+      }, 500)
+      wx.navigateTo({
+        url: '../tiXianRecord/tiXianRecord',
+      })
+    } else { return }
   },
   dhFun() {
-    var that = this;
-    fun.noReClick(this)
-    // fun.showLoading('加载中...');
-    wx.navigateTo({
-      url: '../duiHuanRecord/duiHuanRecord',
-      complete: function (res) {
-        // 通过eventChannel向被打开页面传送数据
-        // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+    // fun.noReClick(this)
+    if (!this.data.reClick) {
+      this.setData({
+        reClick: true
+      })
+      setTimeout(() => {
         this.setData({
-          reClick:true
+          reClick: false
         })
-      }
-    })
-
+      }, 500)
+      wx.navigateTo({
+        url: '../duiHuanRecord/duiHuanRecord',
+      })
+    }else{return}
   },
   propFun() { //提现开启
     this.setData({
